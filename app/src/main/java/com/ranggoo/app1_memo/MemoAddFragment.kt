@@ -1,13 +1,16 @@
 package com.ranggoo.app1_memo
 
+import android.icu.text.SimpleDateFormat
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.ranggoo.app1_memo.databinding.FragmentMemoAdd1Binding
+import java.util.*
 
 
 class MemoAddFragment : Fragment() {
@@ -36,5 +39,46 @@ class MemoAddFragment : Fragment() {
 
 
     }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        when (item.itemId) {
+
+            //저장버튼
+            R.id.btn_save -> {
+                //사용자가 입력한 내용 가지고 온다.
+                val memoSubject = binding.addMemoSubject.text
+                val memoText = binding.addMemoText.text
+
+                //쿼리문
+                val sql = """
+                    insert into MemoTable (memo_subject, memo_text, memo_date)
+                    values(?, ?, ?)
+                """.trimIndent()
+
+                //데이터베이스 오픈
+                val helper = DBHelper(this)
+
+                //현재시간을 구하기
+                val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+                val now = sdf.format(Date())
+
+                //?에 세팅될 값
+                var arg1 = arrayOf(memoSubject,memoText,now)
+
+                //저장
+                helper.writableDatabase.execSQL(sql,arg1)
+
+
+                //데이타베이스 닫기
+                helper.writableDatabase.close()
+                finish()
+            }
+        }
+
+        return super.onOptionsItemSelected(item)
+    }
+
+
 
 }
