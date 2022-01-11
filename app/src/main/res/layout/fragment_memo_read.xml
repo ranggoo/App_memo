@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".MemoReadFragment">
 
-     <ImageView
+    <ImageView
         android:id="@+id/action_bar"
         android:layout_width="match_parent"
         android:layout_height="56dp"
@@ -19,7 +19,7 @@
         android:layout_marginStart="72dp"
         android:text="기록 읽기"
         android:textColor="@color/white"
-        android:textSize="24dp"
+        android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="@id/action_bar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -80,25 +80,23 @@
         android:id="@+id/btn_share"
         android:layout_width="100dp"
         android:layout_height="100dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="50dp"
         android:background="@drawable/button"
         android:padding="25dp"
         android:src="@drawable/no8"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginEnd="50dp"
-        android:layout_marginBottom="50dp"/>
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <ImageView
         android:id="@+id/btn_read_back"
         android:layout_width="24dp"
         android:layout_height="24dp"
+        android:layout_margin="14dp"
         android:src="@drawable/no7"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="@id/action_bar"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_margin="14dp"/>
-
-
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

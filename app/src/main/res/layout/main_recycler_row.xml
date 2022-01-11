@@ -21,7 +21,6 @@
         android:text="subject"
         android:textSize="20sp"
         app:layout_constraintTop_toBottomOf="@id/memo_date"
-
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
