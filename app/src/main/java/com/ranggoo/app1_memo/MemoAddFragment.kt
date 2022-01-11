@@ -1,6 +1,5 @@
 package com.ranggoo.app1_memo
 
-import android.icu.text.SimpleDateFormat
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.ranggoo.app1_memo.databinding.FragmentMemoAdd1Binding
+import java.text.SimpleDateFormat
 import java.util.*
 
 
@@ -57,10 +57,10 @@ class MemoAddFragment : Fragment() {
                 """.trimIndent()
 
                 //데이터베이스 오픈
-                val helper = DBHelper(this)
+                val helper = DBHelper(requireContext())
 
                 //현재시간을 구하기
-                val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+                val sdf = SimpleDateFormat("yyyy-MM-dd")
                 val now = sdf.format(Date())
 
                 //?에 세팅될 값
@@ -72,7 +72,7 @@ class MemoAddFragment : Fragment() {
 
                 //데이타베이스 닫기
                 helper.writableDatabase.close()
-                finish()
+                activity?.finish()
             }
         }
 
