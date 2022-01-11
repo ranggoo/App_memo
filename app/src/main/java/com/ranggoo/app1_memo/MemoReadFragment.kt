@@ -56,7 +56,7 @@ class MemoReadFragment : Fragment() {
     override fun onResume() {
         super.onResume()
 
-        val helper = DBHelper(this)
+        val helper = DBHelper(requireContext())
 
         val sql = """
             select memo_subject, memo_date, memo_text
@@ -65,7 +65,7 @@ class MemoReadFragment : Fragment() {
         """.trimIndent()
 
         //글번호 출력
-        val memoIdx = intent.getIntExtra("memo_idx", 0)
+        val memoIdx = activity?.intent?.getIntExtra("memo_idx", 0)
 
         //쿼리 실행
         val args = arrayOf(memoIdx.toString())
@@ -94,58 +94,15 @@ class MemoReadFragment : Fragment() {
 
         when (item.itemId) {
             android.R.id.home -> {
-                finish()
+                activity?.finish()
             }
 
             //메뉴수정
             R.id.btn_modify ->{
 
-                var memoModifyIntent = Intent(this, MemoModifyFragment::class.java)
-
-                //글 번호를 담는다
-                val memoIdx = intent.getIntExtra("memo_idx",0)
-                memoModifyIntent.putExtra("memo_idx",memoIdx)
-
-                startActivity(memoModifyIntent)
-
             }
             //메뉴 삭제
             R.id.btn_delete ->{
-
-                var builder = AlertDialog.Builder(this)
-
-                builder.setTitle("메모삭제")
-                builder.setMessage("삭제하겠습니까?")
-                builder.setIcon(R.mipmap.ic_launcher)
-
-                builder.setPositiveButton("삭제"){dialogInterface, i ->
-
-                    //데이터 베이스 오픈
-                    val helper = DBHelper(this)
-
-                    val sql = """
-                        delete from MemoTable
-                        where memo_idx = ?
-                    """.trimIndent()
-
-                    //글번호 가져오기
-                    val memoIdx = intent.getIntExtra("memo_idx", 0)
-
-                    //쿼리문 실행
-                    var args = arrayOf(memoIdx.toString())
-
-                    helper.writableDatabase.execSQL(sql,args)
-                    helper.writableDatabase.close()
-
-                    finish()
-
-
-
-                }
-                builder.setNegativeButton("취소",null)
-
-                builder.show()
-
 
             }
         }

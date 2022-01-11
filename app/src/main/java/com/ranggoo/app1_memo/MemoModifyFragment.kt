@@ -1,5 +1,6 @@
 package com.ranggoo.app1_memo
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -22,7 +23,7 @@ class MemoModifyFragment : Fragment() {
     ): View? {
 
         // Inflate the layout for this fragment
-        val helpers = DBHelper(this)
+        val helpers = DBHelper(requireContext())
 
         val sql = """
             select memo_subject, memo_text
@@ -30,7 +31,7 @@ class MemoModifyFragment : Fragment() {
             where memo_idx = ?
         """.trimIndent()
 
-        val memoIdx = intent.getIntExtra("memo_idx", 0)
+        val memoIdx = activity?.intent?.getIntExtra("memo_idx", 0)
 
         var args = arrayOf(memoIdx.toString())
 
@@ -44,9 +45,6 @@ class MemoModifyFragment : Fragment() {
         val memoText = c1.getString(idx2)
 
         helpers.writableDatabase.close()
-
-
-
 
         _binding =FragmentMemoModifyBinding.inflate(inflater, container, false)
 
@@ -67,13 +65,13 @@ class MemoModifyFragment : Fragment() {
 
         when (item.itemId) {
             android.R.id.home -> {
-                finish()
+                activity?.finish()
             }
 
             //저장
             R.id.btn_save ->{
 
-                val helper = DBHelper(this)
+                val helper = DBHelper(requireContext())
 
                 val sql = """
                     update MemoTable
@@ -84,14 +82,14 @@ class MemoModifyFragment : Fragment() {
 
                 val memoSubject = binding.memoModifySubject.text
                 val memoText = binding.memoModifyText.text
-                val memoIdx = intent.getIntExtra("memo_idx", 0)
+                val memoIdx = activity?.intent?.getIntExtra("memo_idx", 0)
 
                 var args = arrayOf(memoSubject, memoText, memoIdx.toString())
 
                 helper.writableDatabase.execSQL(sql,args)
                 helper.writableDatabase.close()
 
-                finish()
+                activity?.finish()
 
             }
         }
