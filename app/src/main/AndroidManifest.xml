@@ -9,15 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.App1_Memo">
-        <activity
-            android:name=".MemoModifyActivity"
-            android:exported="false" />
-        <activity
-            android:name=".MemoReadActivity"
-            android:exported="false" />
-        <activity
-            android:name=".MemoAddActivity"
-            android:exported="false" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true"

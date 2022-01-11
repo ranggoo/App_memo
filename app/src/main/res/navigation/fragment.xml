@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment"
+    app:startDestination="@id/mainFragment">
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.ranggoo.app1_memo.MainFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_mainFragment_to_memoAddFragment"
+            app:destination="@id/memoAddFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_memoReadFragment"
+            app:destination="@id/memoReadFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/memoModifyFragment"
+        android:name="com.ranggoo.app1_memo.MemoModifyFragment"
+        android:label="fragment_memo_modify"
+        tools:layout="@layout/fragment_memo_modify" >
+        <action
+            android:id="@+id/action_memoModifyFragment_to_memoReadFragment"
+            app:destination="@id/memoReadFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/memoAddFragment"
+        android:name="com.ranggoo.app1_memo.MemoAddFragment"
+        android:label="fragment_memo_add1"
+        tools:layout="@layout/fragment_memo_add1" >
+        <action
+            android:id="@+id/action_memoAddFragment_to_mainFragment2"
+            app:destination="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/memoReadFragment"
+        android:name="com.ranggoo.app1_memo.MemoReadFragment"
+        android:label="fragment_memo_read"
+        tools:layout="@layout/fragment_memo_read" >
+        <action
+            android:id="@+id/action_memoReadFragment_to_memoModifyFragment"
+            app:destination="@id/memoModifyFragment" />
+        <action
+            android:id="@+id/action_memoReadFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+</navigation>
