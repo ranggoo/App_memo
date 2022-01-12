@@ -1,13 +1,16 @@
-package com.ranggoo.app1_memo
+package com.ranggoo.app1_memo.main
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResultListener
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.ranggoo.app1_memo.R
 import com.ranggoo.app1_memo.databinding.FragmentMainBinding
 
 class MainFragment : Fragment() {
@@ -19,6 +22,8 @@ class MainFragment : Fragment() {
     val subjectList = ArrayList<String>()
     val dateList = ArrayList<String>()
     val idxList = ArrayList<Int>()
+
+    private val viewModel by viewModels<MainViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,6 +51,7 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initView()
+        initViewModel()
     }
 
     private fun initView() = with(binding) {
@@ -56,6 +62,14 @@ class MainFragment : Fragment() {
         rv.setOnClickListener {
             findNavController().navigate(R.id.action_mainFragment_to_memoReadFragment)
         }
+    }
+
+    private fun initViewModel() {
+        // 뷰모델 초기화.
+        viewModel.init(requireContext())
+        viewModel.memoList.observe(viewLifecycleOwner,{ memoList ->
+            Log.d("Test","메모리스트: $memoList")
+        })
     }
 
     //앱이 화면에서 삭제 시 메모리에서 삭제가 실행되는 코드!!!!!
