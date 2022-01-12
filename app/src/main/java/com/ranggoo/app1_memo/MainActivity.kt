@@ -12,7 +12,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        binding.tvCount.text = count.toString()
         binding.btnIncrease.setOnClickListener {
             count = count + 1;
             binding.tvCount.text = count.toString()
