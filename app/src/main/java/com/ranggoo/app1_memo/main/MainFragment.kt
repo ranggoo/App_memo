@@ -5,13 +5,20 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Adapter
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.ranggoo.app1_memo.R
 import com.ranggoo.app1_memo.databinding.FragmentMainBinding
+import com.ranggoo.app1_memo.room.MemoEntity
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import java.nio.file.Files.delete
 
 class MainFragment : Fragment() {
 
@@ -53,6 +60,10 @@ class MainFragment : Fragment() {
         initView()
         initViewModel()
     }
+
+
+
+
 
     private fun initView() = with(binding) {
         btnAdd.setOnClickListener {

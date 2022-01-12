@@ -16,13 +16,16 @@ class DBHelper(
     }
 
     // 테이블 생성 코드를 작성해준다
-    override fun onUpgrade(p0: SQLiteDatabase?, p1: Int, p2: Int) {}
+    override fun onUpgrade(p0: SQLiteDatabase?, p1: Int, p2: Int) {
+        p0?.execSQL(DELETE)
+        onCreate(p0)
+    }
 
     // 메모 추가.
     fun insertMemo(memoSubject: String, memoText: String) {
 
         //현재시간을 구하기
-        val sdf = SimpleDateFormat("yyyy-MM-dd")
+        val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
         val now = sdf.format(Date())
 
         //?에 세팅될 값
@@ -53,6 +56,13 @@ class DBHelper(
                     insert into MemoTable (memo_subject, memo_text, memo_date)
                     values(?, ?, ?)
                 """.trimIndent()
+
+        //메모 삭제 sql
+        private val DELETE = """
+                    delete into MemoTable (memo_subject, memo_text, memo_date)
+                    values(?, ?, ?)
+                
+        """.trimIndent()
 
     }
 
