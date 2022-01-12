@@ -14,7 +14,8 @@
         <entry key="..\:/Project/App1_Memo/app/src/main/res/menu/main_menu.xml" value="0.2421875" />
         <entry key="..\:/Project/App1_Memo/app/src/main/res/menu/modify_menu.xml" value="0.20364583333333333" />
         <entry key="..\:/Project/App1_Memo/app/src/main/res/menu/read_menu.xml" value="0.20364583333333333" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.10729166666666666" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.16770833333333332" />
+        <entry key="app/src/main/res/layout/fragment_main.xml" value="0.16770833333333332" />
       </map>
     </option>
   </component>
