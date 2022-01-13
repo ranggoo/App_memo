@@ -40,7 +40,7 @@ class MemoAddFragment : Fragment() {
             val memoText = binding.addMemoText.text.toString().trim()
 
             // 글내용 디비 저장.
-            DBHelper(requireContext())
+            DBHelper()
                 .insertMemo(
                     memoSubject = memoSubject,
                     memoText = memoText

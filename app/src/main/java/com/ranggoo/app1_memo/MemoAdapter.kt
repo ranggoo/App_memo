@@ -8,13 +8,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ranggoo.app1_memo.databinding.MainRecyclerRowBinding
 
 data class MemoData(
-
-    val subject: String,
-    val date: String,
+    val id: Long,
+    val title: String,
+    val content: String
 )
 
 private var itemDiffCallback = object : DiffUtil.ItemCallback<MemoData>() {
-    override fun areItemsTheSame(oldItem: MemoData, newItem: MemoData): Boolean = oldItem.subject == newItem.subject
+    override fun areItemsTheSame(oldItem: MemoData, newItem: MemoData): Boolean = oldItem.id == newItem.id
 
     override fun areContentsTheSame(oldItem: MemoData, newItem: MemoData): Boolean = oldItem == newItem
 }
@@ -35,10 +35,8 @@ class MemoAdapter : ListAdapter<MemoData, MemoAdapter.MemoViewHolder>(itemDiffCa
 
         fun bind(item: MemoData) {
             with(binding) {
-                memoDate.text = item.date
-                memoSubject.text = item.subject
-
-
+                memoDate.text = item.title
+                memoSubject.text = item.content
             }
         }
     }
