@@ -29,4 +29,15 @@ class MainViewModel(
         _memoList.value = memoEntityList
     }
 
+    fun insertMemo(memoSubject: String, memoContent: String) {
+        // 글내용 디비 저장.
+        DBHelper()
+            .insertMemo(
+                memoSubject = memoSubject,
+                memoText = memoContent
+            )
+        // 메모 저장후 리스트 다시 호출.
+        getMemoList()
+    }
+
 }

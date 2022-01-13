@@ -36,13 +36,6 @@ class MemoAddFragment : Fragment() {
             val memoSubject = binding.addMemoSubject.text.toString().trim()
             val memoText = binding.addMemoText.text.toString().trim()
 
-            // 글내용 디비 저장.
-            DBHelper()
-                .insertMemo(
-                    memoSubject = memoSubject,
-                    memoText = memoText
-                )
-
             // 프래그먼트로 값전달.
             val bundle = bundleOf("memo_subject" to memoSubject, "memo_content" to memoText)
             setFragmentResult(requestKey = "ADD", result = bundle)

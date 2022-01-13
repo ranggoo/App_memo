@@ -19,10 +19,6 @@ class MainFragment : Fragment() {
 
     private val binding get() = _binding!!
 
-    val subjectList = ArrayList<String>()
-    val dateList = ArrayList<String>()
-    val idxList = ArrayList<Int>()
-
     private val viewModel by viewModels<MainViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,10 +30,9 @@ class MainFragment : Fragment() {
         // 만약에 onCreateView에 setFragmentResultListener가 있으면, 화면이 그려질때마다 리스너를 등록하기 때문에, 넘겨주는 bundle 값을 받을 수 없음
         // 따라서 항상 리슨을 하고 있어야 되기 때문에, onCreate에서 등록.
         setFragmentResultListener(requestKey = "ADD") { key, bundle ->
-            val memoSubject = bundle.getString("memo_subject")
-            val memoContent = bundle.getString("memo_content")
-            Toast.makeText(requireContext(), "제목: $memoSubject, 내용: $memoContent", Toast.LENGTH_SHORT).show()
-            viewModel.getMemoList()
+            val memoSubject = bundle.getString("memo_subject")?:""
+            val memoContent = bundle.getString("memo_content")?:""
+            viewModel.insertMemo(memoSubject,memoContent)
         }
     }
 
@@ -68,6 +63,7 @@ class MainFragment : Fragment() {
     private fun initViewModel() {
         viewModel.memoList.observe(viewLifecycleOwner,{ memoList ->
             Log.d("Test","메모리스트: $memoList")
+
         })
     }
 
