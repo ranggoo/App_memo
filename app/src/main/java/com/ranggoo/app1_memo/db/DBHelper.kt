@@ -1,4 +1,4 @@
-package com.ranggoo.app1_memo
+package com.ranggoo.app1_memo.db
 
 import com.ranggoo.app1_memo.db.MemoDB
 import com.ranggoo.app1_memo.db.MemoDbItem

@@ -7,19 +7,19 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.ranggoo.app1_memo.databinding.MainRecyclerRowBinding
 
-data class MemoData(
+data class MemoEntity(
     val id: Long,
     val title: String,
     val content: String
 )
 
-private var itemDiffCallback = object : DiffUtil.ItemCallback<MemoData>() {
-    override fun areItemsTheSame(oldItem: MemoData, newItem: MemoData): Boolean = oldItem.id == newItem.id
+private var itemDiffCallback = object : DiffUtil.ItemCallback<MemoEntity>() {
+    override fun areItemsTheSame(oldItem: MemoEntity, newItem: MemoEntity): Boolean = oldItem.id == newItem.id
 
-    override fun areContentsTheSame(oldItem: MemoData, newItem: MemoData): Boolean = oldItem == newItem
+    override fun areContentsTheSame(oldItem: MemoEntity, newItem: MemoEntity): Boolean = oldItem == newItem
 }
 
-class MemoAdapter : ListAdapter<MemoData, MemoAdapter.MemoViewHolder>(itemDiffCallback) {
+class MemoAdapter : ListAdapter<MemoEntity, MemoAdapter.MemoViewHolder>(itemDiffCallback) {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MemoViewHolder {
@@ -33,7 +33,7 @@ class MemoAdapter : ListAdapter<MemoData, MemoAdapter.MemoViewHolder>(itemDiffCa
         val binding: MainRecyclerRowBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: MemoData) {
+        fun bind(item: MemoEntity) {
             with(binding) {
                 memoDate.text = item.title
                 memoSubject.text = item.content

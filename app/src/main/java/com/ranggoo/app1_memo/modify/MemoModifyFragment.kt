@@ -1,4 +1,4 @@
-package com.ranggoo.app1_memo
+package com.ranggoo.app1_memo.modify
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,21 +8,20 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.navigation.fragment.findNavController
-import com.ranggoo.app1_memo.databinding.FragmentMemoReadBinding
+import com.ranggoo.app1_memo.databinding.FragmentMemoModifyBinding
 
-class MemoReadFragment : Fragment() {
 
-    private var _binding : FragmentMemoReadBinding? = null
+class MemoModifyFragment : Fragment() {
+
+    private var _binding: FragmentMemoModifyBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        _binding = FragmentMemoReadBinding.inflate(inflater, container, false)
+        _binding =FragmentMemoModifyBinding.inflate(inflater, container, false)
         return binding.root
     }
 }

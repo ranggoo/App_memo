@@ -3,15 +3,15 @@ package com.ranggoo.app1_memo.main
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.ranggoo.app1_memo.DBHelper
-import com.ranggoo.app1_memo.MemoData
+import com.ranggoo.app1_memo.db.DBHelper
+import com.ranggoo.app1_memo.MemoEntity
 
 class MainViewModel(
     val dbHelper: DBHelper = DBHelper()
 ) : ViewModel() {
 
-    private val _memoList: MutableLiveData<List<MemoData>> = MutableLiveData<List<MemoData>>()
-    val memoList: LiveData<List<MemoData>> = _memoList
+    private val _memoList: MutableLiveData<List<MemoEntity>> = MutableLiveData<List<MemoEntity>>()
+    val memoList: LiveData<List<MemoEntity>> = _memoList
 
     init {
         getMemoList()
@@ -20,7 +20,7 @@ class MainViewModel(
     fun getMemoList() {
         val memoList = dbHelper.readAllMemo()
         val memoEntityList = memoList.map {
-            MemoData(
+            MemoEntity(
                 id = it.id,
                 title = it.subject,
                 content = it.content
