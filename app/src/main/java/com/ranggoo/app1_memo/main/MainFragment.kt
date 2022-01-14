@@ -12,6 +12,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ranggoo.app1_memo.MemoAdapter
+import com.ranggoo.app1_memo.MemoEntity
 import com.ranggoo.app1_memo.R
 import com.ranggoo.app1_memo.databinding.FragmentMainBinding
 
@@ -60,8 +61,19 @@ class MainFragment : Fragment() {
         }
 
         // 리싸이클러뷰 셋팅
+        memoAdapter.addMemoAdapterListener(object : MemoAdapter.MemoAdapterListener {
+            override fun onClick(memo: MemoEntity) {
+                // 설정해놓은 argument의 memoEntity에 memo를 넣음.
+                // 빌드하면 actionMainFragmentToMemoReadFragment 자동으로 생성됨
+                val aciton = MainFragmentDirections.actionMainFragmentToMemoReadFragment(memoEntity = memo)
+                // 이동.
+                findNavController().navigate(aciton)
+            }
+        })
+
         rv.layoutManager = LinearLayoutManager(requireContext())
         rv.adapter = memoAdapter
+
 
     }
 

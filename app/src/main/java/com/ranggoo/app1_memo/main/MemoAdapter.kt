@@ -1,17 +1,21 @@
 package com.ranggoo.app1_memo
 
+import android.os.Parcelable
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.ranggoo.app1_memo.databinding.MainRecyclerRowBinding
+import kotlinx.parcelize.Parcelize
 
+// 프래그먼트에서 프래그먼트로 데이터 넘겨줄려면 @Parcelize를 해야됨.!
+@Parcelize
 data class MemoEntity(
     val id: Long,
     val title: String,
     val content: String
-)
+) : Parcelable
 
 private var itemDiffCallback = object : DiffUtil.ItemCallback<MemoEntity>() {
     override fun areItemsTheSame(oldItem: MemoEntity, newItem: MemoEntity): Boolean = oldItem.id == newItem.id
@@ -21,6 +25,15 @@ private var itemDiffCallback = object : DiffUtil.ItemCallback<MemoEntity>() {
 
 class MemoAdapter : ListAdapter<MemoEntity, MemoAdapter.MemoViewHolder>(itemDiffCallback) {
 
+    private lateinit var listener: MemoAdapterListener
+
+    interface MemoAdapterListener{
+        fun onClick(memo:MemoEntity)
+    }
+
+    fun addMemoAdapterListener(_listener:MemoAdapterListener){
+        listener = _listener
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MemoViewHolder {
         return MemoViewHolder(
@@ -29,7 +42,8 @@ class MemoAdapter : ListAdapter<MemoEntity, MemoAdapter.MemoViewHolder>(itemDiff
     }
 
     override fun onBindViewHolder(holder: MemoViewHolder, position: Int) = holder.bind(getItem(position))
-    class MemoViewHolder(
+
+    inner class MemoViewHolder(
         val binding: MainRecyclerRowBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
@@ -38,6 +52,9 @@ class MemoAdapter : ListAdapter<MemoEntity, MemoAdapter.MemoViewHolder>(itemDiff
                 memoId.text = item.id.toString()
                 memoTitle.text = item.title
                 memoContent.text = item.content
+            }
+            binding.memoContent.setOnClickListener {
+                listener.onClick(item)
             }
         }
     }
