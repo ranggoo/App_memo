@@ -10,6 +10,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.ranggoo.app1_memo.MemoAdapter
 import com.ranggoo.app1_memo.R
 import com.ranggoo.app1_memo.databinding.FragmentMainBinding
 
@@ -20,6 +22,8 @@ class MainFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val viewModel by viewModels<MainViewModel>()
+
+    private val memoAdapter:MemoAdapter = MemoAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,15 +59,15 @@ class MainFragment : Fragment() {
             findNavController().navigate(R.id.action_mainFragment_to_memoAddFragment)
         }
 
-        rv.setOnClickListener {
-            findNavController().navigate(R.id.action_mainFragment_to_memoReadFragment)
-        }
+        // 리싸이클러뷰 셋팅
+        rv.layoutManager = LinearLayoutManager(requireContext())
+        rv.adapter = memoAdapter
+
     }
 
     private fun initViewModel() {
         viewModel.memoList.observe(viewLifecycleOwner,{ memoList ->
-            Log.d("Test","메모리스트: $memoList")
-
+            memoAdapter.submitList(memoList)
         })
     }
 
