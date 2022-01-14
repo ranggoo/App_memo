@@ -1,7 +1,9 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-parcelize' // @Parcelize 를 사용하기 위해 필요함.
 }
+apply plugin: "androidx.navigation.safeargs.kotlin" // 프래그먼트 -> 프래그먼트 데이터넘겨 주기위해 필요함
 
 android {
     compileSdk 31
