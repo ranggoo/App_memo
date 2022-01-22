@@ -19,6 +19,7 @@ class MemoReadFragment : Fragment() {
 
     private var _binding: FragmentMemoReadBinding? = null
     private val binding get() = _binding!!
+    private val args by navArgs<MemoReadFragmentArgs>()
 
 
 
@@ -33,6 +34,8 @@ class MemoReadFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
 
     }
 }

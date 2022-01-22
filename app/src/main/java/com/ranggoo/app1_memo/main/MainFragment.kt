@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.LifecycleOwner
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ranggoo.app1_memo.MemoAdapter
 import com.ranggoo.app1_memo.databinding.FragmentMainBinding
@@ -61,6 +62,12 @@ class MainFragment : Fragment() {
         memoAdapter.addMemoCilckListener(object : MemoAdapter.MemoAdapterListener {
             override fun onClick(memo: MemoEntity) {
                 Log.d("listener", "$memo")
+
+                val action = MainFragmentDirections.actionMainFragmentToMemoReadFragment(memo)
+                findNavController().navigate(action)
+
+                Log.d("action", "$memo")
+
             }
         })
     }

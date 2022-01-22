@@ -47,5 +47,8 @@
         <action
             android:id="@+id/action_memoReadFragment_to_mainFragment"
             app:destination="@id/mainFragment" />
+        <argument
+            android:name="memo"
+            app:argType="com.ranggoo.app1_memo.main.MemoEntity" />
     </fragment>
 </navigation>
