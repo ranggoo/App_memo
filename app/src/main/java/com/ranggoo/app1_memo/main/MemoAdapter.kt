@@ -7,15 +7,11 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.ranggoo.app1_memo.databinding.MainRecyclerRowBinding
+import com.ranggoo.app1_memo.main.MemoEntity
 import kotlinx.parcelize.Parcelize
 
 // 프래그먼트에서 프래그먼트로 데이터 넘겨줄려면 @Parcelize를 해야됨.!
-@Parcelize
-data class MemoEntity(
-    val id: Long,
-    val title: String,
-    val content: String
-) : Parcelable
+
 
 private var itemDiffCallback = object : DiffUtil.ItemCallback<MemoEntity>() {
     override fun areItemsTheSame(oldItem: MemoEntity, newItem: MemoEntity): Boolean = oldItem.id == newItem.id

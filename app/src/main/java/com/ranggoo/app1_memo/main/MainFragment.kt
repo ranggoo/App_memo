@@ -5,15 +5,12 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
+import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ranggoo.app1_memo.MemoAdapter
-import com.ranggoo.app1_memo.MemoEntity
-import com.ranggoo.app1_memo.R
 import com.ranggoo.app1_memo.databinding.FragmentMainBinding
 
 class MainFragment : Fragment() {
@@ -37,7 +34,7 @@ class MainFragment : Fragment() {
         setFragmentResultListener(requestKey = "ADD") { key, bundle ->
             val memoSubject = bundle.getString("memo_subject")?:""
             val memoContent = bundle.getString("memo_content")?:""
-            viewModel.insertMemo(memoSubject,memoContent)
+
         }
     }
 
@@ -56,31 +53,26 @@ class MainFragment : Fragment() {
     }
 
     private fun initView() = with(binding) {
-        btnAdd.setOnClickListener {
-            findNavController().navigate(R.id.action_mainFragment_to_memoAddFragment)
-        }
+        // recyclerview init.
 
-        // 리싸이클러뷰 셋팅
-        memoAdapter.addMemoAdapterListener(object : MemoAdapter.MemoAdapterListener {
-            override fun onClick(memo: MemoEntity) {
-                // 설정해놓은 argument의 memoEntity에 memo를 넣음.
-                // 빌드하면 actionMainFragmentToMemoReadFragment 자동으로 생성됨
-                val aciton = MainFragmentDirections.actionMainFragmentToMemoReadFragment(memoEntity = memo)
-                // 이동.
-                findNavController().navigate(aciton)
-            }
-        })
-
-        rv.layoutManager = LinearLayoutManager(requireContext())
+        rv.layoutManager = LinearLayoutManager(context)
         rv.adapter = memoAdapter
 
 
     }
 
+
+
     private fun initViewModel() {
-        viewModel.memoList.observe(viewLifecycleOwner,{ memoList ->
-            memoAdapter.submitList(memoList)
+
+        viewModel.memoList.observe(viewLifecycleOwner, { memoList ->
+            Log.d("test", "$memoList")
+
         })
+
+        viewModel.getMemoData()
+
+
     }
 
     //앱이 화면에서 삭제 시 메모리에서 삭제가 실행되는 코드!!!!!

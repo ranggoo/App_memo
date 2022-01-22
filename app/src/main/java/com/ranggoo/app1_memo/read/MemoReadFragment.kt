@@ -20,7 +20,7 @@ class MemoReadFragment : Fragment() {
     private var _binding: FragmentMemoReadBinding? = null
     private val binding get() = _binding!!
 
-    private val args: MemoReadFragmentArgs by navArgs()
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,7 +33,6 @@ class MemoReadFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val memo = args.memoEntity
-        Log.d("메모읽기화면", "전달받은 argument: $memo")
+
     }
 }
