@@ -23,11 +23,11 @@ class MemoAdapter : ListAdapter<MemoEntity, MemoAdapter.MemoViewHolder>(itemDiff
 
     private lateinit var listener: MemoAdapterListener
 
-    interface MemoAdapterListener{
+    interface MemoAdapterListener {
         fun onClick(memo:MemoEntity)
     }
 
-    fun addMemoAdapterListener(_listener:MemoAdapterListener){
+    fun addMemoCilckListener(_listener : MemoAdapterListener){
         listener = _listener
     }
 
@@ -49,7 +49,7 @@ class MemoAdapter : ListAdapter<MemoEntity, MemoAdapter.MemoViewHolder>(itemDiff
                 memoTitle.text = item.title
                 memoContent.text = item.content
             }
-            binding.memoContent.setOnClickListener {
+            binding.root.setOnClickListener {
                 listener.onClick(item)
             }
         }

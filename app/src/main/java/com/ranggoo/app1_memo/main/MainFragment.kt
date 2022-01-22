@@ -21,7 +21,7 @@ class MainFragment : Fragment() {
 
     private val viewModel by viewModels<MainViewModel>()
 
-    private val memoAdapter:MemoAdapter = MemoAdapter()
+    private val memoAdapter: MemoAdapter = MemoAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,8 +32,8 @@ class MainFragment : Fragment() {
         // 만약에 onCreateView에 setFragmentResultListener가 있으면, 화면이 그려질때마다 리스너를 등록하기 때문에, 넘겨주는 bundle 값을 받을 수 없음
         // 따라서 항상 리슨을 하고 있어야 되기 때문에, onCreate에서 등록.
         setFragmentResultListener(requestKey = "ADD") { key, bundle ->
-            val memoSubject = bundle.getString("memo_subject")?:""
-            val memoContent = bundle.getString("memo_content")?:""
+            val memoSubject = bundle.getString("memo_subject") ?: ""
+            val memoContent = bundle.getString("memo_content") ?: ""
 
         }
     }
@@ -58,9 +58,12 @@ class MainFragment : Fragment() {
         rv.layoutManager = LinearLayoutManager(context)
         rv.adapter = memoAdapter
 
-
+        memoAdapter.addMemoCilckListener(object : MemoAdapter.MemoAdapterListener {
+            override fun onClick(memo: MemoEntity) {
+                Log.d("listener", "$memo")
+            }
+        })
     }
-
 
 
     private fun initViewModel() {
@@ -70,6 +73,8 @@ class MainFragment : Fragment() {
             memoAdapter.submitList(memoList)
 
         })
+
+
 
         viewModel.getMemoData()
 
