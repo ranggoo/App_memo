@@ -67,6 +67,7 @@ class MainFragment : Fragment() {
 
         viewModel.memoList.observe(viewLifecycleOwner, { memoList ->
             Log.d("test", "$memoList")
+            memoAdapter.submitList(memoList)
 
         })
 
