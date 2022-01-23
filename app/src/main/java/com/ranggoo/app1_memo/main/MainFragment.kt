@@ -1,14 +1,12 @@
 package com.ranggoo.app1_memo.main
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.LifecycleOwner
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ranggoo.app1_memo.MemoAdapter
@@ -59,14 +57,10 @@ class MainFragment : Fragment() {
         rv.layoutManager = LinearLayoutManager(context)
         rv.adapter = memoAdapter
 
-        memoAdapter.addMemoCilckListener(object : MemoAdapter.MemoAdapterListener {
+        memoAdapter.addMemoClickListener(object : MemoAdapter.MemoAdapterListener {
             override fun onClick(memo: MemoEntity) {
-                Log.d("listener", "$memo")
-
                 val action = MainFragmentDirections.actionMainFragmentToMemoReadFragment(memo)
                 findNavController().navigate(action)
-
-                Log.d("action", "$memo")
 
             }
         })
@@ -74,18 +68,9 @@ class MainFragment : Fragment() {
 
 
     private fun initViewModel() {
-
         viewModel.memoList.observe(viewLifecycleOwner, { memoList ->
-            Log.d("test", "$memoList")
             memoAdapter.submitList(memoList)
-
         })
-
-
-
-        viewModel.getMemoData()
-
-
     }
 
     //앱이 화면에서 삭제 시 메모리에서 삭제가 실행되는 코드!!!!!

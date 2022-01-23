@@ -12,16 +12,20 @@ class MainViewModel(
     val dbHelper: DBHelper = DBHelper()
 ) : ViewModel() {
 
-    private var _memoList: MutableLiveData<List<MemoEntity>> = MutableLiveData<List<MemoEntity>>()
+    private val _memoList: MutableLiveData<List<MemoEntity>> = MutableLiveData<List<MemoEntity>>()
     val memoList: LiveData<List<MemoEntity>> = _memoList
 
-    fun getMemoData() {
+    init {
+        getMemoList()
+    }
+
+    fun getMemoList() {
         val memoList: List<MemoDbItem> = dbHelper.readAllMemo()
         val memoEntityList: List<MemoEntity> = memoList.map {
             MemoEntity(
                 id = it.id,
-                content = it.content,
-                title = it.subject
+                title = it.subject,
+                content = it.content
             )
         }
         _memoList.value = memoEntityList
