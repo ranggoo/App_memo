@@ -4,12 +4,14 @@ import android.os.Parcelable
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.ranggoo.app1_memo.data.db.DBHelper
 import com.ranggoo.app1_memo.data.db.MemoDbItem
+import com.ranggoo.app1_memo.domain.GetMemoListAllUseCase
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.parcelize.Parcelize
-
-class MainViewModel(
-    val dbHelper: DBHelper = DBHelper()
+import javax.inject.Inject
+@HiltViewModel
+class MainViewModel @Inject constructor(
+    private val getMemoListAllUseCase: GetMemoListAllUseCase
 ) : ViewModel() {
 
     private val _memoList: MutableLiveData<List<MemoEntity>> = MutableLiveData<List<MemoEntity>>()
@@ -19,17 +21,8 @@ class MainViewModel(
         getMemoList()
     }
 
-    fun getMemoList() {
-        val memoList: List<MemoDbItem> = dbHelper.readAllMemo()
-        val memoEntityList: List<MemoEntity> = memoList.map {
-            MemoEntity(
-                id = it.id,
-                title = it.subject,
-                content = it.content
-            )
-        }
-        _memoList.value = memoEntityList
-    }
+    fun getMemoList() {_memoList.value = getMemoListAllUseCase()}
+
 
 
 }
