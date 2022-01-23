@@ -1,2 +1,17 @@
 1. build.gradle에 defendency 적용
 2. hiltAndroidApp 적용
+3. domain -> MemoRepository 추가
+4. data -> MemoRepositoryImp 추가 -> 동시에 di도 같이함
+5. domain -> UseCase 추가
+6. presentation -> viewModel수정 & @AndroidEntryPoint 추가
+
+숙제
+1 object class 테스트코드 작성 & SingleTon이랑 연계해서 설명하기
+2 클린아키텍처 적용 및 dagger Hilt 적용
+-#1 ReadFragment전 에서 시험봄
+3 operator fun invoke 테스트코드 작성 및 설명
+4 addMemo UseCase 작성 및 RepositoryImpl 작성
+
+
+
+수요일 12시 시험
