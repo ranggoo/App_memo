@@ -6,7 +6,7 @@
     app:startDestination="@id/mainFragment">
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.ranggoo.app1_memo.main.MainFragment"
+        android:name="com.ranggoo.app1_memo.presentation.main.MainFragment"
         android:label="fragment_main"
         tools:layout="@layout/fragment_main" >
         <action
@@ -20,7 +20,7 @@
     </fragment>
     <fragment
         android:id="@+id/memoModifyFragment"
-        android:name="com.ranggoo.app1_memo.modify.MemoModifyFragment"
+        android:name="com.ranggoo.app1_memo.presentation.modify.MemoModifyFragment"
         android:label="fragment_memo_modify"
         tools:layout="@layout/fragment_memo_modify" >
         <action
@@ -29,7 +29,7 @@
     </fragment>
     <fragment
         android:id="@+id/memoAddFragment"
-        android:name="com.ranggoo.app1_memo.add.MemoAddFragment"
+        android:name="com.ranggoo.app1_memo.presentation.add.MemoAddFragment"
         android:label="fragment_memo_add1"
         tools:layout="@layout/fragment_memo_add1" >
         <action
@@ -38,7 +38,7 @@
     </fragment>
     <fragment
         android:id="@+id/memoReadFragment"
-        android:name="com.ranggoo.app1_memo.read.MemoReadFragment"
+        android:name="com.ranggoo.app1_memo.presentation.read.MemoReadFragment"
         android:label="fragment_memo_read"
         tools:layout="@layout/fragment_memo_read" >
         <action

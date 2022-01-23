@@ -1,8 +1,4 @@
-package com.ranggoo.app1_memo.db
-
-import com.ranggoo.app1_memo.db.MemoDB
-import com.ranggoo.app1_memo.db.MemoDbItem
-import java.util.*
+package com.ranggoo.app1_memo.data.db
 
 class DBHelper {
 

@@ -1,4 +1,4 @@
-package com.ranggoo.app1_memo.db
+package com.ranggoo.app1_memo.data.db
 
 object MemoDB {
     val memoList: MutableList<MemoDbItem> = mutableListOf<MemoDbItem>(

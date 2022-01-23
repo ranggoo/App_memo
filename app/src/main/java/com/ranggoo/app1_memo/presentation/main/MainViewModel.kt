@@ -1,11 +1,11 @@
-package com.ranggoo.app1_memo.main
+package com.ranggoo.app1_memo.presentation.main
 
 import android.os.Parcelable
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.ranggoo.app1_memo.db.DBHelper
-import com.ranggoo.app1_memo.db.MemoDbItem
+import com.ranggoo.app1_memo.data.db.DBHelper
+import com.ranggoo.app1_memo.data.db.MemoDbItem
 import kotlinx.parcelize.Parcelize
 
 class MainViewModel(

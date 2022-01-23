@@ -1,4 +1,4 @@
-package com.ranggoo.app1_memo.add
+package com.ranggoo.app1_memo.presentation.add
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.setFragmentResult
 import androidx.navigation.fragment.findNavController
-import com.ranggoo.app1_memo.db.DBHelper
 import com.ranggoo.app1_memo.databinding.FragmentMemoAdd1Binding
 
 

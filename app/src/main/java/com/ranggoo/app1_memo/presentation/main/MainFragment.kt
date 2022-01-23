@@ -1,4 +1,4 @@
-package com.ranggoo.app1_memo.main
+package com.ranggoo.app1_memo.presentation.main
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,8 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.ranggoo.app1_memo.MemoAdapter
 import com.ranggoo.app1_memo.databinding.FragmentMainBinding
 
