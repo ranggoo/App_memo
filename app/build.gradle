@@ -2,6 +2,8 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-parcelize' // @Parcelize 를 사용하기 위해 필요함.
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
 }
 apply plugin: "androidx.navigation.safeargs.kotlin" // 프래그먼트 -> 프래그먼트 데이터넘겨 주기위해 필요함
 
@@ -61,4 +63,14 @@ dependencies {
     implementation "androidx.fragment:fragment:$fragment_version"
     implementation "androidx.fragment:fragment-ktx:$fragment_version"
     debugImplementation "androidx.fragment:fragment-testing:$fragment_version"
+
+    // Coroutines
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2'
+
+
+    // Hilt
+    implementation "com.google.dagger:hilt-android:2.39.1"
+    kapt "com.google.dagger:hilt-android-compiler:2.39.1"
+
 }
