@@ -1,6 +1,7 @@
 package com.ranggoo.app1_memo.presentation.read
 
 import android.os.Bundle
+import android.renderscript.ScriptGroup
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -30,8 +31,13 @@ class MemoReadFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         Log.d("readFragment", "${args.memo}")
+        initView()
 
+    }
 
-
+    private fun initView() = with(binding) {
+        val memoEntity=args.memo
+        memoReadSubject.text = memoEntity.title
+        memoReadText.text = memoEntity.content
     }
 }
