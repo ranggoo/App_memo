@@ -49,6 +49,7 @@
             app:destination="@id/mainFragment" />
         <argument
             android:name="memo"
-            app:argType="com.ranggoo.app1_memo.main.MemoEntity" />
+            app:argType="com.ranggoo.app1_memo.presentation.main.MemoEntity" />
+
     </fragment>
 </navigation>
