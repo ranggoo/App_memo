@@ -2,8 +2,8 @@ package com.ranggoo.app1_memo.data
 
 import com.ranggoo.app1_memo.data.db.DBHelper
 import com.ranggoo.app1_memo.data.db.MemoDbItem
+import com.ranggoo.app1_memo.domain.MemoEntity
 import com.ranggoo.app1_memo.domain.MemoRepository
-import com.ranggoo.app1_memo.presentation.main.MemoEntity
 import javax.inject.Inject
 
 class MemoRepositoryImpl @Inject constructor(

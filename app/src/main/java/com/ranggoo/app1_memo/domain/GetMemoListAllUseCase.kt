@@ -1,6 +1,5 @@
 package com.ranggoo.app1_memo.domain
 
-import com.ranggoo.app1_memo.presentation.main.MemoEntity
 import javax.inject.Inject
 
 class GetMemoListAllUseCase @Inject constructor(

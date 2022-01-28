@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.ranggoo.app1_memo.databinding.MainRecyclerRowBinding
-import com.ranggoo.app1_memo.presentation.main.MemoEntity
+import com.ranggoo.app1_memo.domain.MemoEntity
 
 // 프래그먼트에서 프래그먼트로 데이터 넘겨줄려면 @Parcelize를 해야됨.!
 
