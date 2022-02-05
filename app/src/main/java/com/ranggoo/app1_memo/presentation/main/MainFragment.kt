@@ -7,11 +7,14 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ranggoo.app1_memo.MemoAdapter
 import com.ranggoo.app1_memo.databinding.FragmentMainBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class MainFragment : Fragment() {
@@ -22,7 +25,7 @@ class MainFragment : Fragment() {
 
     private val viewModel by viewModels<MainViewModel>()
 
-    private val memoAdapter: MemoAdapter = MemoAdapter()
+    private val memoAdapter = MemoAdapter(::onMemoClick)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,24 +58,25 @@ class MainFragment : Fragment() {
 
     private fun initView() = with(binding) {
         // recyclerview init.
-
         rv.layoutManager = LinearLayoutManager(context)
         rv.adapter = memoAdapter
 
-        memoAdapter.addMemoClickListener(object : MemoAdapter.MemoAdapterListener {
-            override fun onClick(memo: MemoEntity) {
-                val action = MainFragmentDirections.actionMainFragmentToMemoReadFragment(memo)
-                findNavController().navigate(action)
+    }
 
-            }
-        })
+    private fun onMemoClick(memo: MemoEntity) {
+        val action = MainFragmentDirections.actionMainFragmentToMemoReadFragment(memo)
+        findNavController().navigate(action)
     }
 
 
     private fun initViewModel() {
-        viewModel.memoList.observe(viewLifecycleOwner, { memoList ->
-            memoAdapter.submitList(memoList)
-        })
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.memoList
+                .collect {
+                    memoAdapter.submitList(it.memoList)
+                }
+        }
+
     }
 
     //앱이 화면에서 삭제 시 메모리에서 삭제가 실행되는 코드!!!!!
