@@ -7,7 +7,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.ranggoo.app1_memo.R
 import com.ranggoo.app1_memo.databinding.FragmentMemoReadBinding
 
 class MemoReadFragment : Fragment() {
@@ -39,5 +42,15 @@ class MemoReadFragment : Fragment() {
         val memoEntity=args.memo
         memoReadSubject.text = memoEntity.title
         memoReadText.text = memoEntity.content
+
+        binding.btnModify.setOnClickListener{
+            Toast.makeText(context,"메모를 수정합니다", Toast.LENGTH_SHORT).show()
+            findNavController().navigate(R.id.action_memoReadFragment_to_memoModifyFragment)
+        }
+
+        binding.btnDelete.setOnClickListener{
+            Toast.makeText(context,"메모를 삭제합니다", Toast.LENGTH_SHORT).show()
+
+        }
     }
 }

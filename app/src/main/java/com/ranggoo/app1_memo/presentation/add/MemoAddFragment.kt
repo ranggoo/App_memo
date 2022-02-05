@@ -8,13 +8,16 @@ import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.setFragmentResult
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.ranggoo.app1_memo.databinding.FragmentMemoAdd1Binding
+import com.ranggoo.app1_memo.presentation.read.MemoReadFragmentArgs
 
 
 class MemoAddFragment : Fragment() {
 
     private var _binding: FragmentMemoAdd1Binding? = null
     private val binding get() = _binding!!
+    private val args by navArgs<MemoAddFragmentArgs>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,6 +45,8 @@ class MemoAddFragment : Fragment() {
             // 이전 프래그먼트로 이동.
             findNavController().navigateUp()
         }
+
+
     }
 
 

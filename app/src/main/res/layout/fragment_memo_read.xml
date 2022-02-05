@@ -4,22 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/grey"
     tools:context=".presentation.read.MemoReadFragment">
 
     <ImageView
         android:id="@+id/action_bar"
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:background="@color/veryperi"
+        android:background="@color/grey"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="72dp"
-        android:text="기록 읽기"
+        android:layout_marginStart="16dp"
+        android:text="Note-Read"
         android:textColor="@color/white"
-        android:textSize="20dp"
+        android:textSize="25sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@id/action_bar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -29,32 +31,47 @@
         android:id="@+id/memo_read_subject"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="@drawable/square"
         android:padding="5dp"
+        android:textColor="@color/white"
         android:textSize="20sp"
         app:layout_constraintTop_toBottomOf="@id/action_bar" />
-
-    <TextView
-        android:id="@+id/memo_read_date"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="5dp"
-        android:textSize="15sp"
-        app:layout_constraintTop_toBottomOf="@id/memo_read_subject" />
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:padding="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/memo_read_date">
+        android:layout_margin="5dp"
+        android:background="@drawable/square"
+        android:padding="5dp"
+        app:layout_constraintBottom_toTopOf="@id/imageSize"
+        app:layout_constraintTop_toBottomOf="@id/memo_read_subject">
 
         <TextView
             android:id="@+id/memo_read_text"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@drawable/square"
             android:gravity="top"
-            android:textSize="18sp" />
+            android:textColor="@color/white"
+
+            android:textSize="16sp" />
     </androidx.core.widget.NestedScrollView>
+
+    <ImageView
+        android:id="@+id/imageSize"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginEnd="30dp"
+        android:src="@drawable/no9"
+        app:layout_constraintBottom_toBottomOf="@+id/imageSize"
+        app:layout_constraintEnd_toEndOf="@+id/imageSize"
+        app:layout_constraintTop_toTopOf="@id/imageSize" />
 
     <ImageView
         android:id="@+id/btn_modify"
@@ -66,6 +83,7 @@
         app:layout_constraintEnd_toEndOf="@id/btn_delete"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <ImageView
         android:id="@+id/btn_delete"
         android:layout_width="24dp"
@@ -74,28 +92,6 @@
         android:src="@drawable/no3"
         app:layout_constraintBottom_toBottomOf="@id/action_bar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/btn_share"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginBottom="50dp"
-        android:background="@drawable/button"
-        android:padding="25dp"
-        android:src="@drawable/no8"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <ImageView
-        android:id="@+id/btn_read_back"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:layout_margin="14dp"
-        android:src="@drawable/no7"
-        app:layout_constraintBottom_toBottomOf="@id/action_bar"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
 

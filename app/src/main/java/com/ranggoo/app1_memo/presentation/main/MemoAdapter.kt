@@ -46,7 +46,6 @@ class MemoAdapter : ListAdapter<MemoEntity, MemoAdapter.MemoViewHolder>(itemDiff
 
         fun bind(item: MemoEntity) {
             with(binding) {
-                memoId.text = item.id.toString()
                 memoTitle.text = item.title
                 memoContent.text = item.content
             }

@@ -9,5 +9,13 @@
     <color name="white">#FFFFFFFF</color>
     <color name="pink">#F969FF</color>
     <color name="veryperi">#6667AB</color>
+    <color name="grey">#373737</color>
+    <color name="black1">#232323</color>
+    <color name="grey1">#5C5B5B</color>
+    <color name="yellow">#FFEB3B</color>
+
+
+
+
 
 </resources>
