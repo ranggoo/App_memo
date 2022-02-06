@@ -12,7 +12,7 @@ data class HomeViewState(
 ) {
     companion object {
         fun initial(): HomeViewState = HomeViewState(
-            feedList = emptyList()
+            feedList = null
         )
     }
 }

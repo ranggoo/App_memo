@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.john.episode.domain.feed.usecase.EpisodeGetFeedContentListUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
@@ -39,6 +40,7 @@ class HomeViewModel @Inject constructor(
                 search = search,
                 companyType = companyType
             )
+            delay(1000)
             _feedList.update { prevState ->
                 prevState.copy(
                     feedList = feedList.feed_list
