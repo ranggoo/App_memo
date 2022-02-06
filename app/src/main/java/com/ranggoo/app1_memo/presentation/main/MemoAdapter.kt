@@ -17,20 +17,9 @@ private var itemDiffCallback = object : DiffUtil.ItemCallback<MemoEntity>() {
     override fun areContentsTheSame(oldItem: MemoEntity, newItem: MemoEntity): Boolean = oldItem == newItem
 }
 
-class MemoAdapter : ListAdapter<MemoEntity, MemoAdapter.MemoViewHolder>(itemDiffCallback) {
-
-    private lateinit var listener : MemoAdapterListener
-
-    interface MemoAdapterListener {
-        fun onClick(memo:MemoEntity)
-    }
-
-    fun addMemoClickListener(_listener : MemoAdapterListener){
-        listener=_listener
-    }
-
-
-
+class MemoAdapter(
+    private val onMemoClick: (MemoEntity) -> Unit
+) : ListAdapter<MemoEntity, MemoAdapter.MemoViewHolder>(itemDiffCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MemoViewHolder {
         return MemoViewHolder(
@@ -50,15 +39,12 @@ class MemoAdapter : ListAdapter<MemoEntity, MemoAdapter.MemoViewHolder>(itemDiff
                 memoContent.text = item.content
             }
             binding.root.setOnClickListener {
-                listener.onClick(item)
+                onMemoClick(item)
             }
 
-
-
-
-            }
         }
     }
+}
 
 
 

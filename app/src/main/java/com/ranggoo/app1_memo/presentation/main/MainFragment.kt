@@ -8,21 +8,12 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.FragmentNavigator
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.transition.FragmentTransitionSupport
 import com.ranggoo.app1_memo.MemoAdapter
-import com.ranggoo.app1_memo.R
 import com.ranggoo.app1_memo.databinding.FragmentMainBinding
 import com.ranggoo.app1_memo.domain.MemoEntity
-import com.ranggoo.app1_memo.presentation.add.MemoAddFragment
-import com.ranggoo.app1_memo.presentation.add.MemoAddFragmentArgs
-import com.ranggoo.app1_memo.presentation.add.MemoAddFragmentDirections
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class MainFragment : Fragment() {
@@ -33,7 +24,7 @@ class MainFragment : Fragment() {
 
     private val viewModel by viewModels<MainViewModel>()
 
-    private val memoAdapter: MemoAdapter = MemoAdapter()
+    private val memoAdapter = MemoAdapter(::onMemoClick)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,23 +57,15 @@ class MainFragment : Fragment() {
 
     private fun initView() = with(binding) {
         // recyclerview init.
-
         rv.layoutManager = LinearLayoutManager(context)
         rv.adapter = memoAdapter
 
-        memoAdapter.addMemoClickListener(object : MemoAdapter.MemoAdapterListener {
-            override fun onClick(memo: MemoEntity) {
-                val action = MainFragmentDirections.actionMainFragmentToMemoReadFragment(memo)
-                findNavController().navigate(action)
+    }
 
-                Toast.makeText(context,"메모를 읽습니다", Toast.LENGTH_SHORT).show()
-
-
-
-            }
-
-        })
-
+    private fun onMemoClick(memo: MemoEntity) {
+        val action = MainFragmentDirections.actionMainFragmentToMemoReadFragment(memo)
+        findNavController().navigate(action)
+    }
 
         binding.btnAdd.setOnClickListener{
             Toast.makeText(context,"메모를 추가합니다", Toast.LENGTH_SHORT).show()
@@ -91,11 +74,11 @@ class MainFragment : Fragment() {
     }
 
     private fun initViewModel() {
-
         viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.memoList.collect{
-                memoAdapter.submitList(it.memoList)
-            }
+            viewModel.memoList
+                .collect {
+                    memoAdapter.submitList(it.memoList)
+                }
         }
 
     }

@@ -1,11 +1,13 @@
 package com.ranggoo.app1_memo.presentation.main
 
+import android.os.Parcelable
 import androidx.lifecycle.ViewModel
 import com.ranggoo.app1_memo.domain.GetMemoListAllUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
+import kotlinx.parcelize.Parcelize
 import javax.inject.Inject
 
 @HiltViewModel
@@ -14,7 +16,6 @@ class MainViewModel @Inject constructor(
 ) : ViewModel() {
 
     private val _memoList = MutableStateFlow<MainViewState>(MainViewState.initial())
-    //                                                      최초 초기화 되는 값 ^-
     val memoList = _memoList.asStateFlow()
 
     init {
@@ -22,16 +23,20 @@ class MainViewModel @Inject constructor(
     }
 
     fun getMemoList() {
-
         val memoList = getMemoListAllUseCase()
         _memoList.update { prevState ->
             prevState.copy(
                 memoList = memoList
             )
-
         }
     }
 
 
 }
 
+@Parcelize
+data class MemoEntity(
+    val id: Long,
+    val title: String,
+    val content: String
+) : Parcelable
