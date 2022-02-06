@@ -4,7 +4,7 @@ import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
 data class EpisodeFeedContentListResponse(
-    val feed_Content_Response_list: List<EpisodeFeedContentResponse>?,
+    val feed_list: List<EpisodeFeedContentResponse>?,
     val is_empty: Boolean?,
     val limit: Int?,
     val offset: Int?,
@@ -30,15 +30,15 @@ data class EpisodeFeedContentImageResponse(
 
 @JsonClass(generateAdapter = true)
 data class EpisodeFeedContentResponse(
-    val feedContentCategoryResponse: EpisodeFeedContentCategoryResponse?,
+    val category: EpisodeFeedContentCategoryResponse?,
     val comment_count: Int?,
     val content: String?,
-    val feedContent_imageResponse: EpisodeFeedContentImageResponse?,
+    val content_image: EpisodeFeedContentImageResponse?,
     val create_time: String?,
     val id: Int?,
     val is_mine: Boolean??,
     val like_count: Int?,
-    val contentLike_Response_list: List<EpisodeFeedContentLikeResponse>?,
+    val like_list: List<EpisodeFeedContentLikeResponse>?,
     val nick_name: String?,
     val title: String?,
     val update_time: String?,
