@@ -10,7 +10,7 @@ import javax.inject.Singleton
 
 @InstallIn(SingletonComponent::class)
 @Module
-object EpisodeModule {
+object AppModule {
     @Provides
     @Singleton
     fun provideContext(application: Application): Context = application

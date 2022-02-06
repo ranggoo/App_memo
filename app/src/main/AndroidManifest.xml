@@ -3,7 +3,7 @@
     package="com.john.episode">
 
     <application
-        android:name="com.john.episode.MemoApplication"
+        android:name="com.john.episode.EpisodeApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
