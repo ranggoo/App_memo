@@ -11,6 +11,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
 import com.john.episode.databinding.FragmentHomeBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
@@ -54,9 +55,7 @@ class HomeFragment : Fragment() {
         // recyclerview init.
         rv.layoutManager = LinearLayoutManager(context)
 
-        binding.btnAdd.setOnClickListener {
-            Toast.makeText(context, "메모를 추가합니다", Toast.LENGTH_SHORT).show()
-        }
+
 
     }
 
@@ -66,6 +65,11 @@ class HomeFragment : Fragment() {
            .flowWithLifecycle(viewLifecycleOwner.lifecycle)
            .onEach {(feedList)->
                Timber.tag("FeedList").d("$feedList")
+               val firstItem = feedList?.get(0)?.content_image?.url
+               Glide.with(this)
+                   .load(firstItem)
+                   .circleCrop()
+                   .into(binding.testImage)
 
            }.launchIn(viewLifecycleOwner.lifecycleScope)
     }
