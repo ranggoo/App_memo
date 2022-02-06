@@ -9,8 +9,8 @@ class EpisodeGetFeedContentListUseCase @Inject constructor(
     suspend operator fun invoke(
         page: Int,
         size: Int,
-        search: String? = null,
-        companyType: String? = null
+        search: String?,
+        companyType: String?
     ) = repository.getEpisodeFeedContentList(
         page = page,
         size = size,

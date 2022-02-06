@@ -5,6 +5,7 @@ import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import dagger.multibindings.IntoSet
+import okhttp3.Interceptor
 import okhttp3.logging.HttpLoggingInterceptor
 
 
@@ -13,9 +14,9 @@ import okhttp3.logging.HttpLoggingInterceptor
 abstract class InterceptorModule {
     @Binds
     @IntoSet
-    abstract fun bindEpisodeInterceptor(episodeInterceptor: EpisodeInterceptor):EpisodeInterceptor
+    abstract fun bindEpisodeInterceptor(episodeInterceptor: EpisodeInterceptor): Interceptor
 
     @Binds
     @IntoSet
-    abstract fun bindHttpLoggingInterceptor(httpLoggingInterceptor: HttpLoggingInterceptor):HttpLoggingInterceptor
+    abstract fun bindHttpLoggingInterceptor(httpLoggingInterceptor: HttpLoggingInterceptor): Interceptor
 }
