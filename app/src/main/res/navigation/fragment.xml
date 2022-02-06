@@ -28,7 +28,7 @@
             app:destination="@id/memoReadFragment" />
         <argument
             android:name="modifymemo"
-            app:argType="com.jhon.app1_memo.domain.MemoEntity" />
+            app:argType="com.jhon.episode.domain.MemoEntity" />
     </fragment>
     <fragment
         android:id="@+id/memoAddFragment"
@@ -40,7 +40,7 @@
             app:destination="@id/mainFragment" />
         <argument
             android:name="memoAdd"
-            app:argType="com.jhon.app1_memo.domain.MemoEntity" />
+            app:argType="com.jhon.episode.domain.MemoEntity" />
     </fragment>
     <fragment
         android:id="@+id/memoReadFragment"
@@ -55,7 +55,7 @@
             app:destination="@id/mainFragment" />
         <argument
             android:name="memo"
-            app:argType="com.jhon.app1_memo.domain.MemoEntity" />
+            app:argType="com.jhon.episode.domain.MemoEntity" />
 
 
     </fragment>
