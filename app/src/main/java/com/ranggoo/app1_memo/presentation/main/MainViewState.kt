@@ -1,5 +1,7 @@
 package com.ranggoo.app1_memo.presentation.main
 
+import com.ranggoo.app1_memo.domain.MemoEntity
+
 /**
  * 메인 화면.
  *

@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.setFragmentResult
 import androidx.navigation.fragment.findNavController
@@ -44,6 +45,8 @@ class MemoAddFragment : Fragment() {
 
             // 이전 프래그먼트로 이동.
             findNavController().navigateUp()
+
+            Toast.makeText(context, "저장되었습니다", Toast.LENGTH_SHORT).show()
         }
 
 

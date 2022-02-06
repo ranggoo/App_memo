@@ -8,12 +8,16 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ranggoo.app1_memo.MemoAdapter
+import com.ranggoo.app1_memo.R
 import com.ranggoo.app1_memo.databinding.FragmentMainBinding
 import com.ranggoo.app1_memo.domain.MemoEntity
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class MainFragment : Fragment() {
@@ -60,6 +64,11 @@ class MainFragment : Fragment() {
         rv.layoutManager = LinearLayoutManager(context)
         rv.adapter = memoAdapter
 
+        binding.btnAdd.setOnClickListener{
+            Toast.makeText(context,"메모를 추가합니다", Toast.LENGTH_SHORT).show()
+            findNavController().navigate(R.id.action_mainFragment_to_memoAddFragment)
+        }
+
     }
 
     private fun onMemoClick(memo: MemoEntity) {
@@ -67,18 +76,12 @@ class MainFragment : Fragment() {
         findNavController().navigate(action)
     }
 
-        binding.btnAdd.setOnClickListener{
-            Toast.makeText(context,"메모를 추가합니다", Toast.LENGTH_SHORT).show()
-            findNavController().navigate(R.id.action_mainFragment_to_memoAddFragment)
-        }
-    }
+
 
     private fun initViewModel() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.memoList
-                .collect {
-                    memoAdapter.submitList(it.memoList)
-                }
+                .collect { memoAdapter.submitList(it.memoList) }
         }
 
     }

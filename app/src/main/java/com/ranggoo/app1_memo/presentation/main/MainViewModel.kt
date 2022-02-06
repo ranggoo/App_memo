@@ -33,10 +33,3 @@ class MainViewModel @Inject constructor(
 
 
 }
-
-@Parcelize
-data class MemoEntity(
-    val id: Long,
-    val title: String,
-    val content: String
-) : Parcelable
