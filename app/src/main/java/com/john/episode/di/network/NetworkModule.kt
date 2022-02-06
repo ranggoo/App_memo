@@ -1,4 +1,4 @@
-package com.john.episode.di
+package com.john.episode.di.network
 
 import com.john.episode.BuildConfig
 import dagger.Module
@@ -13,6 +13,8 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import javax.inject.Named
 import javax.inject.Singleton
 
+
+typealias EpisodeSet<T> = @JvmSuppressWildcards Set<T>
 
 @InstallIn(SingletonComponent::class)
 @Module
@@ -38,9 +40,9 @@ object NetworkModule {
     @Provides
     @Singleton
     fun provideBaseOkHttpClient(
-        httpLoggingInterceptor: HttpLoggingInterceptor
+        interceptors: EpisodeSet<Interceptor>
     ): OkHttpClient = OkHttpClient.Builder().apply {
-        interceptors().add(httpLoggingInterceptor)
+        interceptors().addAll(interceptors)
     }.run {
         build()
     }
@@ -57,5 +59,4 @@ object NetworkModule {
             .client(okHttpClient)
             .build()
     }
-
 }
