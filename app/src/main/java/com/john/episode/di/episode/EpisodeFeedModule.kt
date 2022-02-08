@@ -15,3 +15,4 @@ abstract class EpisodeFeedModule {
         episodeFeedContentRepositoryImpl: EpisodeFeedContentRepositoryImpl
     ): EpisodeFeedContentRepository
 }
+

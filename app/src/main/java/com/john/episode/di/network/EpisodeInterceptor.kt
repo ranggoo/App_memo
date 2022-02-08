@@ -1,6 +1,8 @@
 package com.john.episode.di.network
 
 import android.content.Context
+import com.john.episode.util.SecureSharedPreferences
+import com.john.episode.util.SecureSharedPreferences.Companion.KEY_ACCESS_TOKEN
 import okhttp3.Interceptor
 import okhttp3.Response
 import okhttp3.ResponseBody.Companion.toResponseBody
@@ -10,7 +12,7 @@ import javax.inject.Singleton
 
 @Singleton
 class EpisodeInterceptor @Inject constructor(
-    private val context: Context
+    private val prefer: SecureSharedPreferences
 ) : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
         // original api request.
@@ -23,7 +25,7 @@ class EpisodeInterceptor @Inject constructor(
             .newBuilder()
             .url(url)
             .apply {
-                addHeader(AUTHORIZATION, BEARER + ACCESS_TOKEN)
+                addHeader(AUTHORIZATION, BEARER + prefer.get(KEY_ACCESS_TOKEN,""))
                 addHeader("Content-Type", "application/json; charset=utf-8")
                 addHeader("Accept", "application/json; charset=utf-8")
                 method(original.method, original.body)
@@ -45,8 +47,6 @@ class EpisodeInterceptor @Inject constructor(
     companion object {
         const val BEARER = "Bearer "
         const val AUTHORIZATION = "Authorization"
-
-        const val ACCESS_TOKEN = "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6Im1lbG93MiIsImlhdCI6MTY0NDEzOTEzNiwiZXhwIjoxNjQ0MTYwNzM2fQ.Ec4A8YagjowK-Zps3RiKUf5lVXEDYNUx7VhN3Igs4cE"
     }
 
 }
