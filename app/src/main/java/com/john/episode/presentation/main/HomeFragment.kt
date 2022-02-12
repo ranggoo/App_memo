@@ -75,7 +75,6 @@ class HomeFragment : Fragment() {
             }.launchIn(viewLifecycleOwner.lifecycleScope)
     }
 
-    //앱이 화면에서 삭제 시 메모리에서 삭제가 실행되는 코드!!!!!
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
