@@ -4,9 +4,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.john.episode.databinding.MainRecyclerPostBinding
+import com.john.episode.databinding.ItemRecyclerEpisodeContentBinding
 import com.john.episode.domain.feed.entity.EpisodeFeedContentEntity
-import com.john.episode.domain.feed.entity.EpisodeFeedContentListEntity
 
 private var itemDiffCallback = object : DiffUtil.ItemCallback<EpisodeFeedContentEntity>() {
     override fun areItemsTheSame(oldItem: EpisodeFeedContentEntity, newItem: EpisodeFeedContentEntity): Boolean = oldItem.id == newItem.id
@@ -15,18 +14,18 @@ private var itemDiffCallback = object : DiffUtil.ItemCallback<EpisodeFeedContent
 
 class HomeAdapter(
     private val onClickEpisode: (EpisodeFeedContentEntity) -> Unit
-) : ListAdapter<EpisodeFeedContentEntity, HomeAdapter.MemoViewHolder>(itemDiffCallback) {
+) : ListAdapter<EpisodeFeedContentEntity, HomeAdapter.ContentViewHolder>(itemDiffCallback) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MemoViewHolder {
-        return MemoViewHolder(
-            MainRecyclerPostBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContentViewHolder {
+        return ContentViewHolder(
+            ItemRecyclerEpisodeContentBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         )
     }
 
-    override fun onBindViewHolder(holder: MemoViewHolder, position: Int) = holder.bind(getItem(position))
+    override fun onBindViewHolder(holder: ContentViewHolder, position: Int) = holder.bind(getItem(position))
 
-    inner class MemoViewHolder(
-        private val binding: MainRecyclerPostBinding
+    inner class ContentViewHolder(
+        private val binding: ItemRecyclerEpisodeContentBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: EpisodeFeedContentEntity) = with(binding) {

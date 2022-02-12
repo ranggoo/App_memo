@@ -64,10 +64,7 @@ class HomeFragment : Fragment() {
             layoutManager = LinearLayoutManager(context)
             adapter = homeAdapter
         }
-
-
     }
-
 
     private fun initViewModel() {
         viewModel.feedList
