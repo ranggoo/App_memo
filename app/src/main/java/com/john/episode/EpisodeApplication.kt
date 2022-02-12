@@ -16,7 +16,7 @@ class EpisodeApplication : Application() {
         super.onCreate()
         if (BuildConfig.DEBUG) {
             Timber.plant(Timber.DebugTree())
-            prefer.put(KEY_ACCESS_TOKEN,"adfadfadfadfasdfadfa")
+            // prefer.put(KEY_ACCESS_TOKEN,"")
         }
     }
 }

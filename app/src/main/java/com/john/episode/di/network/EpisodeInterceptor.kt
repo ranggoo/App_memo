@@ -24,7 +24,7 @@ class EpisodeInterceptor @Inject constructor(
             .newBuilder()
             .url(url)
             .apply {
-                addHeader(AUTHORIZATION, BEARER + prefer.get(KEY_ACCESS_TOKEN,""))
+              //  addHeader(AUTHORIZATION, BEARER + prefer.get(KEY_ACCESS_TOKEN,""))
                 addHeader("Content-Type", "application/json; charset=utf-8")
                 addHeader("Accept", "application/json; charset=utf-8")
                 method(original.method, original.body)

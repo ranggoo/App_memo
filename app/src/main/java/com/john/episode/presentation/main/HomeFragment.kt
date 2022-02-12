@@ -71,11 +71,7 @@ class HomeFragment : Fragment() {
             .flowWithLifecycle(viewLifecycleOwner.lifecycle)
             .onEach { (feedList) ->
                 Timber.tag("FeedList").d("$feedList")
-                val firstItem = feedList?.get(0)?.content_image?.url
-                Glide.with(this)
-                    .load(firstItem)
-                    .circleCrop()
-
+               homeAdapter.submitList(feedList)
             }.launchIn(viewLifecycleOwner.lifecycleScope)
     }
 

@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Project/App1_Memo/app/src/main/res/drawable/button.xml" value="0.3125" />
+        <entry key="..\:/Project/App1_Memo/app/src/main/res/drawable/ic_baseline_people_alt_24.xml" value="0.20052083333333334" />
         <entry key="..\:/Project/App1_Memo/app/src/main/res/drawable/ic_launcher_background.xml" value="0.14583333333333334" />
         <entry key="..\:/Project/App1_Memo/app/src/main/res/drawable/splash.xml" value="0.1421875" />
         <entry key="..\:/Project/App1_Memo/app/src/main/res/drawable/square.xml" value="0.32708333333333334" />
@@ -16,6 +17,7 @@
         <entry key="..\:/Project/App1_Memo/app/src/main/res/layout/fragment_memo_add1.xml" value="0.264" />
         <entry key="..\:/Project/App1_Memo/app/src/main/res/layout/fragment_memo_modify.xml" value="0.3109375" />
         <entry key="..\:/Project/App1_Memo/app/src/main/res/layout/fragment_memo_read.xml" value="0.264" />
+        <entry key="..\:/Project/App1_Memo/app/src/main/res/layout/item_recycler_episode_content.xml" value="0.184375" />
         <entry key="..\:/Project/App1_Memo/app/src/main/res/layout/main_recycler_post.xml" value="0.2" />
         <entry key="..\:/Project/App1_Memo/app/src/main/res/layout/main_recycler_post_detail.xml" value="0.3072916666666667" />
         <entry key="..\:/Project/App1_Memo/app/src/main/res/layout/main_recycler_row.xml" value="0.25364583333333335" />

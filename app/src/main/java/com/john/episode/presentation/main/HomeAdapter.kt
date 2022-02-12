@@ -4,6 +4,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.john.episode.databinding.ItemRecyclerEpisodeContentBinding
 import com.john.episode.domain.feed.entity.EpisodeFeedContentEntity
 
@@ -29,6 +31,17 @@ class HomeAdapter(
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: EpisodeFeedContentEntity) = with(binding) {
+            //게시물 내용
+            tvContent.text=item.content
+            //작성자 닉네임
+            tvNickname.text = item.nick_name
+
+            //컨텐츠 이미지
+            Glide.with(itemView)
+                .load(item.content_image?.url)
+                .transition(DrawableTransitionOptions.withCrossFade())
+                .into(ivContent)
+
             itemView.setOnClickListener {
                 //viewholder = binding.root와 동일 전체 영역을 잡음
                 onClickEpisode(item)
