@@ -26,14 +26,12 @@ class HomeAdapter(
     override fun onBindViewHolder(holder: MemoViewHolder, position: Int) = holder.bind(getItem(position))
 
     inner class MemoViewHolder(
-        val binding: MainRecyclerPostBinding
+        private val binding: MainRecyclerPostBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: EpisodeFeedContentEntity) {
-            with(binding) {
-
-            }
-            binding.root.setOnClickListener {
+        fun bind(item: EpisodeFeedContentEntity) = with(binding) {
+            itemView.setOnClickListener {
+                //viewholder = binding.root와 동일 전체 영역을 잡음
                 onClickEpisode(item)
 
             }

@@ -39,7 +39,7 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun onClickEpisode(home: EpisodeFeedContentEntity){
+    private fun onClickEpisode(home: EpisodeFeedContentEntity) {
 
 
     }
@@ -60,24 +60,26 @@ class HomeFragment : Fragment() {
 
     private fun initView() = with(binding) {
         // recyclerview init.
-        rv.layoutManager = LinearLayoutManager(context)
-        rv.adapter=homeAdapter
+        with(rv) {
+            layoutManager = LinearLayoutManager(context)
+            adapter = homeAdapter
+        }
 
 
     }
 
 
     private fun initViewModel() {
-       viewModel.feedList
-           .flowWithLifecycle(viewLifecycleOwner.lifecycle)
-           .onEach {(feedList)->
-               Timber.tag("FeedList").d("$feedList")
-               val firstItem = feedList?.get(0)?.content_image?.url
-               Glide.with(this)
-                   .load(firstItem)
-                   .circleCrop()
+        viewModel.feedList
+            .flowWithLifecycle(viewLifecycleOwner.lifecycle)
+            .onEach { (feedList) ->
+                Timber.tag("FeedList").d("$feedList")
+                val firstItem = feedList?.get(0)?.content_image?.url
+                Glide.with(this)
+                    .load(firstItem)
+                    .circleCrop()
 
-           }.launchIn(viewLifecycleOwner.lifecycleScope)
+            }.launchIn(viewLifecycleOwner.lifecycleScope)
     }
 
     //앱이 화면에서 삭제 시 메모리에서 삭제가 실행되는 코드!!!!!
