@@ -13,7 +13,7 @@ class EpisodeFeedContentRepositoryImpl @Inject constructor(
         size: Int,
         search: String?,
         companyType: String?
-    ) = dataSource.getEpisodeFeeContentList(
+    ) = dataSource.getEpisodeFeedContentList(
         page = page,
         size = size,
         search = search,

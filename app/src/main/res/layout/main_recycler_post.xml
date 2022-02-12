@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:background="@drawable/square"
+    android:paddingBottom="10dp">
+
+    <ImageView
+        android:id="@+id/iv_profile"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/icon" />
+
+    <TextView
+        android:id="@+id/tv_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:textColor="@color/writeBlack"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_profile"
+        app:layout_constraintStart_toEndOf="@+id/iv_profile"
+        app:layout_constraintTop_toTopOf="@+id/iv_profile"
+        tools:text="너지스님" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/imageSource"
+        android:layout_width="100dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:scaleType="fitXY"
+        app:cardCornerRadius="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="h,1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_profile" />
+
+
+    <TextView
+        android:id="@+id/tv_content"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:ellipsize="end"
+        android:letterSpacing="0.03"
+        android:lineSpacingExtra="3dp"
+        android:maxLines="4"
+        android:textColor="@color/writeBlack"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="@id/imageSource"
+        app:layout_constraintEnd_toStartOf="@id/imageSource"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/imageSource"
+        tools:text="너지의말씀-너지너지발아너지너지너지너지발아너지너지너지너지발아너지너지너지너지발아너지너지너지너지발아너지너지너지너지발아너지너지너지너지발아너지너지너지너지발아너지너지너지너지발아너지너지너지" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,11 +10,11 @@ import javax.inject.Singleton
 
 @InstallIn(SingletonComponent::class)
 @Module
-object EpisodeDataSourceModule{
+object EpisodeDataSourceModule {
     @Provides
     @Singleton
-    fun providesEpisodeFeeDataSource(
+    fun providesEpisodeFeedDataSource(
         retrofit: Retrofit
-    ):EpisodeFeedDataSource = retrofit.create(EpisodeFeedDataSource::class.java)
+    ): EpisodeFeedDataSource = retrofit.create(EpisodeFeedDataSource::class.java)
 
 }

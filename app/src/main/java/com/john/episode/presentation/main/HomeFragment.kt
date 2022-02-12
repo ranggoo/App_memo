@@ -1,10 +1,10 @@
 package com.john.episode.presentation.main
 
+import HomeAdapter
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
@@ -26,6 +26,8 @@ class HomeFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val viewModel by viewModels<HomeViewModel>()
+
+    private val homeAdapter = HomeAdapter(::onHomeClick)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,6 +56,7 @@ class HomeFragment : Fragment() {
     private fun initView() = with(binding) {
         // recyclerview init.
         rv.layoutManager = LinearLayoutManager(context)
+        rv.adapter=homeAdapter
 
 
 
@@ -69,7 +72,6 @@ class HomeFragment : Fragment() {
                Glide.with(this)
                    .load(firstItem)
                    .circleCrop()
-                   .into(binding.testImage)
 
            }.launchIn(viewLifecycleOwner.lifecycleScope)
     }
