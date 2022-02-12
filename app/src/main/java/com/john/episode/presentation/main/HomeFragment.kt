@@ -12,7 +12,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.john.episode.databinding.FragmentHomeBinding
-import com.john.episode.domain.feed.entity.EpisodeFeedContentListEntity
+import com.john.episode.domain.feed.entity.EpisodeFeedContentEntity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -27,7 +27,7 @@ class HomeFragment : Fragment() {
 
     private val viewModel by viewModels<HomeViewModel>()
 
-    private val homeAdapter = HomeAdapter(::onHomeClick)
+    private val homeAdapter = HomeAdapter(::onClickEpisode)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,7 +39,7 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun onHomeClick(home: EpisodeFeedContentListEntity){
+    private fun onClickEpisode(home: EpisodeFeedContentEntity){
 
 
     }
