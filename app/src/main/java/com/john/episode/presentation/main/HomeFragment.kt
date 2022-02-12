@@ -1,6 +1,5 @@
 package com.john.episode.presentation.main
 
-import HomeAdapter
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +12,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.john.episode.databinding.FragmentHomeBinding
+import com.john.episode.domain.feed.entity.EpisodeFeedContentListEntity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -39,6 +39,11 @@ class HomeFragment : Fragment() {
         }
     }
 
+    private fun onHomeClick(home: EpisodeFeedContentListEntity){
+
+
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -57,7 +62,6 @@ class HomeFragment : Fragment() {
         // recyclerview init.
         rv.layoutManager = LinearLayoutManager(context)
         rv.adapter=homeAdapter
-
 
 
     }

@@ -7,14 +7,11 @@ import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 
-
 @InstallIn(SingletonComponent::class)
 @Module
 abstract class EpisodeFeedModule {
-
     @Binds
     abstract fun bindsEpisodeFeedContentRepository(
         episodeFeedContentRepositoryImpl: EpisodeFeedContentRepositoryImpl
-    ):EpisodeFeedContentRepository
-
+    ): EpisodeFeedContentRepository
 }

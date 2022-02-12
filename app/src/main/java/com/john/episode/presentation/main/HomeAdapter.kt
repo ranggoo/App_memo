@@ -22,7 +22,6 @@ import com.john.episode.domain.feed.entity.EpisodeFeedContentListEntity
 //
 private var itemDiffCallback = object : DiffUtil.ItemCallback<EpisodeFeedContentListEntity>() {
     override fun areItemsTheSame(oldItem: EpisodeFeedContentListEntity, newItem: EpisodeFeedContentListEntity): Boolean = oldItem.is_empty == newItem.is_empty
-
     override fun areContentsTheSame(oldItem: EpisodeFeedContentListEntity, newItem: EpisodeFeedContentListEntity): Boolean = oldItem == newItem
 }
 
