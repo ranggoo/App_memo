@@ -40,9 +40,21 @@ class HomeViewModel @Inject constructor(
                 search = search,
                 companyType = companyType
             )
+            val contentViewItem = feedList.feed_list?.map {
+                HomeEpisodeViewItem.Content(
+                    content = it
+                )
+            }?: emptyList()
+
+            val dateViewItem = listOf(
+                HomeEpisodeViewItem.Date(
+                    date = feedList.feed_list?.get(0)?.create_time
+                )
+            )
+
             _feedList.update { prevState ->
                 prevState.copy(
-                    feedList = feedList.feed_list
+                    feedList = dateViewItem + contentViewItem
                 )
             }
         }.onFailure {
